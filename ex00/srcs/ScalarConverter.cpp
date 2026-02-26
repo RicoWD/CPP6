@@ -6,7 +6,7 @@
 /*   By: erpascua <erpascua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 02:29:00 by erpascua          #+#    #+#             */
-/*   Updated: 2026/02/26 15:25:04 by erpascua         ###   ########.fr       */
+/*   Updated: 2026/02/26 17:54:00 by erpascua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,28 +28,31 @@ void ScalarConverter::convert(std::string input)
 
 	if (input == "nan" || input == "nanf" || input == "+inf" || input == "+inff" || input == "-inf" || input == "-inff")
 	{
-		// std::cout << BOLDYELLOW << "isSpecial: " << input << "\n" << RESET;
+		std::cout << BOLDYELLOW << "isSpecial: " << input << "\n" << RESET;
 		printSpecial(input);
 		return ;
 	}
 	
 	if (isChar(input))
 	{
-		// std::cout << BOLDYELLOW << "isChar: " << input << "\n" << RESET;
+		std::cout << BOLDYELLOW << "isChar: " << input << "\n" << RESET;
 		printChar(input[0]);
 		return ;
 	}
 
 	if (isInt(input))
 	{
-		// std::cout << BOLDYELLOW << "isInt: " << input << "\n" << RESET;
+		std::cout << BOLDYELLOW << "isInt: " << input << "\n" << RESET;
 		try
 		{
 			int n;
 			std::stringstream ss(input.c_str());
 			ss >> n;
 			if (ss.fail())
+			{
 				std::cerr << "Error: Overflow detected for: " << input << "\n";
+				return ;
+			}
 			printInt(n);
 			return ;
 		}
@@ -59,7 +62,10 @@ void ScalarConverter::convert(std::string input)
 			std::stringstream ss(input.c_str());
 			ss >> d;
 			if (ss.fail())
+			{
 				std::cerr << "Error: Overflow detected for: " << input << "\n";
+				return ;
+			}
 			printDouble(d);
 			return ;
 		}
@@ -67,23 +73,30 @@ void ScalarConverter::convert(std::string input)
 
 	if (isFloat(input))
 	{
-		// std::cout << BOLDYELLOW << "isFloat: " << input << "\n" << RESET;
+		std::cout << BOLDYELLOW << "isFloat: " << input << "\n" << RESET;
 		float f;
 		std::stringstream ss(input.c_str());
 		ss >> f;
 		if (ss.fail())
+		{
 			std::cerr << "Error: Overflow detected for: " << input << "\n";
+			return ;
+		}
 		printFloat(f);
 		return ;
 	}
 
 	if (isDouble(input))
 	{
-		// std::cout << BOLDYELLOW << "isDouble: " << input << "\n" << RESET;
+		std::cout << BOLDYELLOW << "isDouble: " << input << "\n" << RESET;
 		double d;
 		std::stringstream ss(input.c_str());
 		ss >> d;
-		std::cerr << "Error: Overflow detected for: " << input << "\n";
+		if (ss.fail())
+		{
+			std::cerr << "Error: Overflow detected for: " << input << "\n";
+			return ;
+		}
 		printDouble(d);
 		return ;
 	}
@@ -213,8 +226,8 @@ void printChar(char c)
 	std::cout << BOLDGREEN << "Input: " << c << "\n" << RESET;
 	std::cout << "char: '" << c << "'\n";
 	std::cout << "int: " << static_cast<int>(c) << "\n";
-	std::cout << "float: " << static_cast<float>(c); std::cout << "f\n";
-	std::cout << "double: " << static_cast<double>(c); std::cout << "\n";
+	std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(c) << "f\n";
+	std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(c) << "\n";
 	return ;
 }
 
@@ -224,18 +237,18 @@ void printInt(int n)
 	if (n >= 0 && n <= 127 && std::isprint(n))
 		std::cout << "char: '" << static_cast<char>(n) << "'\n";
 	else if (n >= 0 && n <= 127)
-		std::cout << GREY << "char: non displayable\n" << RESET;
+		std::cout << GREY << "char: Non displayable\n" << RESET;
 	else
 		std::cout << GREY << "char: impossible\n" << RESET;
 	std::cout << "int: " << n << "\n";
-	std::cout << "float: " << static_cast<float>(n); std::cout << "f\n";
-	std::cout << "double: " << static_cast<double>(n); std::cout << "\n";
+	std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(n) << "f\n";
+	std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(n) << "\n";
 	return ;
 }
 
 void printFloat(float f)
 {
-	std::cout << BOLDGREEN << "Input: " << f << std::cout << "f\n" << RESET;
+	std::cout << BOLDGREEN << "Input: " << f << "f\n" << RESET;
 	if (std::isnan(f) || std::isinf(f))
 		std::cout << GREY << "char: impossible\n" << RESET
 				  << GREY << "int: impossible\n" << RESET;
@@ -252,20 +265,20 @@ void printFloat(float f)
 			if (n >= 0 && n <= 127 && std::isprint(n))
 				std::cout << "char: '" << static_cast<char>(n) << "'\n";
 			else if (n >= 0 && n <= 127)
-				std::cout << GREY << "char: non displayable\n" << RESET;
+				std::cout << GREY << "char: Non displayable\n" << RESET;
 			else
 				std::cout << GREY << "char: impossible\n" << RESET;
 			std::cout << "int: " << n << "\n";
 		}
 	}
-	std::cout << "float: "; f; std::cout << "f\n";
-	std::cout << "double: "; static_cast<double>(f); std::cout << "\n";
+	std::cout << "float: " << std::fixed << std::setprecision(1) << f << "f\n";
+	std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(f) << "\n";
 	return ;
 }
 
 void printDouble(double d)
 {
-	std::cout << BOLDGREEN << "Input: " << d << std::cout << "\n" << RESET;
+	std::cout << BOLDGREEN << "Input: " << d << "\n" << RESET;
 	if (std::isnan(d) || std::isinf(d))
 		std::cout << GREY << "char: impossible\n" << RESET
 				  << GREY << "int: impossible\n" << RESET
@@ -283,13 +296,13 @@ void printDouble(double d)
 			if (n >= 0 && n <= 127 && std::isprint(n))
 				std::cout << "char: '" << static_cast<char>(n) << "'\n";
 			else if (n >= 0 && n <= 127)
-				std::cout << GREY << "char: non displayable\n" << RESET;
+				std::cout << GREY << "char: Non displayable\n" << RESET;
 			else
 				std::cout << GREY << "char: impossible\n" << RESET;
 			std::cout << "int: " << n << "\n";
 		}
-		std::cout << "float: "; static_cast<float>(d); std::cout << "f\n";
+		std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(d) << "f\n";
 	}
-	std::cout << "double: "; d; std::cout << "\n";
+	std::cout << "double: " << std::fixed << std::setprecision(1) << d << "\n";
 	return ;
 }
