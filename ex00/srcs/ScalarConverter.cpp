@@ -6,7 +6,7 @@
 /*   By: erpascua <erpascua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 02:29:00 by erpascua          #+#    #+#             */
-/*   Updated: 2026/02/25 05:41:33 by erpascua         ###   ########.fr       */
+/*   Updated: 2026/02/26 03:26:11 by erpascua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,13 @@ void ScalarConverter::convert(std::string input)
 		printImpossible();
 		return ;
 	}
+
+	if (input == "nan" || input == "nanf" || input == "+inf" || input == "+inff" || input == "-inf" || input == "-inff")
+	{
+		// std::cout << BOLDYELLOW << "isSpecial: " << input << "\n" << RESET;
+		printSpecial(input);
+		return ;
+	}
 	
 	if (isChar(input))
 	{
@@ -36,7 +43,7 @@ void ScalarConverter::convert(std::string input)
 	if (isInt(input))
 	{
 		// std::cout << BOLDYELLOW << "isInt: " << input << "\n" << RESET;
-		try 
+		try
 		{
 			int n = std::stoi(input);
 			printInt(n);
@@ -45,6 +52,7 @@ void ScalarConverter::convert(std::string input)
 		catch (std::out_of_range &) {
 			double d = std::stod(input);
 			printDouble(d);
+			return ;
 		}
 	}
 
@@ -160,6 +168,28 @@ static void	printFormat(double d)
 		std::cout << std::fixed << std::setprecision(1) << d << std::defaultfloat;
 	else
 		std::cout << std::defaultfloat << d;
+}
+
+void printSpecial(std::string input)
+{
+	std::cout << BOLDGREEN << "Input: " << input << "\n" << RESET;
+	std::cout << GREY << "char: impossible\n" << RESET;
+	std::cout << GREY << "int: impossible\n" << RESET;
+	if (input == "nan" || input == "nanf")
+	{
+		std::cout << "float: nanf\n";
+		std::cout << "double: nan\n";
+	}
+	else if (input == "+inf" || input == "+inff")
+	{
+		std::cout << "float: +inff\n";
+		std::cout << "double: +inf\n";
+	}
+	else
+	{
+		std::cout << "float: -inff\n";
+		std::cout << "double: -inf\n";
+	}
 }
 
 void printChar(char c)

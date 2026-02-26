@@ -15,6 +15,7 @@
 # include <climits>
 # include <iomanip>
 # include <iostream>
+# include <limits>
 # include <stdexcept>
 # include <string>
 # include <cmath>
@@ -48,8 +49,8 @@ int isDouble(std::string input);
 
 // Print functions
 void printImpossible();
+void printSpecial(std::string input);
 void printChar(char c);
 void printInt(int n);
 void printFloat(float f);
-void printDouble(double d);
 void printDouble(double d);
