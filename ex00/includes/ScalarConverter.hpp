@@ -6,7 +6,7 @@
 /*   By: erpascua <erpascua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 18:44:18 by erpascua          #+#    #+#             */
-/*   Updated: 2026/02/25 04:51:31 by erpascua         ###   ########.fr       */
+/*   Updated: 2026/02/26 15:17:00 by erpascua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdexcept>
 # include <string>
 # include <cmath>
+# include <sstream>
 
 # define RESET		"\033[0m"
 # define GREEN		"\033[32m"

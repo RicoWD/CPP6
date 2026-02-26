@@ -6,7 +6,7 @@
 /*   By: erpascua <erpascua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 02:27:39 by erpascua          #+#    #+#             */
-/*   Updated: 2026/02/25 02:28:15 by erpascua         ###   ########.fr       */
+/*   Updated: 2026/02/26 15:17:08 by erpascua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int main(int argc, char **argv)
 		std::cerr << "Usage: ./convert <input>\n";
 		return 1;
 	}
-	
+
 	std::string input = argv[1];
 	ScalarConverter::convert(input);
-	
+
 	return 0;
 }
