@@ -6,7 +6,7 @@
 #    By: erpascua <erpascua@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/21 15:23:43 by erpascua          #+#    #+#              #
-#    Updated: 2026/02/11 02:02:00 by erpascua         ###   ########.fr        #
+#    Updated: 2026/02/26 21:18:09 by erpascua         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@
 NAME =	serialize
 
 SRCS =	srcs/main.cpp \
-		srcs/Serializer.cpp
+		srcs/Data.cpp
 
 OBJ_DIR = obj
 OBJ = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)

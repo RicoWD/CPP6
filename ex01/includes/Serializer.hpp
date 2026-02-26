@@ -6,28 +6,26 @@
 /*   By: erpascua <erpascua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 17:57:27 by erpascua          #+#    #+#             */
-/*   Updated: 2026/02/26 18:12:24 by erpascua         ###   ########.fr       */
+/*   Updated: 2026/02/26 21:16:55 by erpascua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-# include <iomanip>
-# include <string>
-# include <cstdint>
-# include <iostream>
+# include <stdint.h>
+# include "Data.hpp"
 
-struct Data;
+class Data;
 
 class Serializer
 {
 	private:
-		Serializer();
-		Serializer(const Serializer& cpy);
-		Serializer& operator=(const Serializer& cpy);
-		~Serializer();
+		Serializer() {};
+		Serializer(const Serializer& cpy) { (void)cpy; };
+		Serializer& operator=(const Serializer& cpy) { (void)cpy; return (*this); };
+		~Serializer() {};
 
 	public:
-		static uintptr_t serialize(Data* ptr);
-		static Data* deserialize(uintptr_t raw);
+		static uintptr_t serialize(Data* ptr) { return (reinterpret_cast<uintptr_t>(ptr)); };
+		static Data* deserialize(uintptr_t raw) { return (reinterpret_cast<Data*>(raw)); };
 };
