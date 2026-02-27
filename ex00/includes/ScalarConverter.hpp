@@ -6,7 +6,7 @@
 /*   By: erpascua <erpascua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 18:44:18 by erpascua          #+#    #+#             */
-/*   Updated: 2026/02/26 15:17:00 by erpascua         ###   ########.fr       */
+/*   Updated: 2026/02/27 04:22:00 by erpascua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ class ScalarConverter
 {
 	private:
 		// OCF (non instantiable)
-		ScalarConverter() {};
-		ScalarConverter(const ScalarConverter &other) { (void)other; };
-		ScalarConverter &operator=(const ScalarConverter &other) { (void)other; return *this; };
-		~ScalarConverter() {};
+		ScalarConverter();
+		ScalarConverter(const ScalarConverter &cpy);
+		ScalarConverter &operator=(const ScalarConverter &cpy);
+		~ScalarConverter();
 	
 	public:
 		static void convert(std::string input);
