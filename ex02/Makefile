@@ -6,7 +6,7 @@
 #    By: erpascua <erpascua@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/21 15:23:43 by erpascua          #+#    #+#              #
-#    Updated: 2026/02/11 02:02:00 by erpascua         ###   ########.fr        #
+#    Updated: 2026/02/27 02:38:40 by erpascua         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,13 +21,15 @@
 NAME =	identify
 
 SRCS =	srcs/main.cpp \
-		srcs/identify.cpp
+		srcs/Base.cpp \
+		srcs/identify.cpp \
+		srcs/generate.cpp
 
 OBJ_DIR = obj
 OBJ = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -I./includes -std=c++98 -g
+CFLAGS = -Wall -Wextra -Werror -I./includes -std=c++98 -g -pedantic
 
 ################################################################################
 #																			   #
