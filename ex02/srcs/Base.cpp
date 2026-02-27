@@ -1,26 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Base.hpp                                           :+:      :+:    :+:   */
+/*   Base.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erpascua <erpascua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/26 21:30:11 by erpascua          #+#    #+#             */
-/*   Updated: 2026/02/27 02:47:29 by erpascua         ###   ########.fr       */
+/*   Created: 2026/02/27 03:45:00 by erpascua          #+#    #+#             */
+/*   Updated: 2026/02/27 04:42:31 by erpascua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "Base.hpp"
 
-# include <iostream>
-# include <ctime>
-
-class Base
-{
-	public:
-		virtual ~Base();
-};
-
-Base* generate(void);
-void identify(Base* p);
-void identify(Base& p);
+Base::~Base() {}
