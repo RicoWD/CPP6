@@ -6,7 +6,7 @@
 #    By: erpascua <erpascua@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/21 15:23:43 by erpascua          #+#    #+#              #
-#    Updated: 2026/02/26 21:18:09 by erpascua         ###   ########.fr        #
+#    Updated: 2026/02/27 04:37:13 by erpascua         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,13 +21,14 @@
 NAME =	serialize
 
 SRCS =	srcs/main.cpp \
-		srcs/Data.cpp
+		srcs/Data.cpp \
+		srcs/Serializer.cpp
 
 OBJ_DIR = obj
 OBJ = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -I./includes -std=c++98 -g
+CFLAGS = -Wall -Wextra -Werror -I./includes -std=c++98 -g -pedantic
 
 ################################################################################
 #																			   #
