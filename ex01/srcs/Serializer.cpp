@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Data.cpp                                           :+:      :+:    :+:   */
+/*   Serializer.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erpascua <erpascua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/26 19:31:56 by erpascua          #+#    #+#             */
-/*   Updated: 2026/02/27 04:29:50 by erpascua         ###   ########.fr       */
+/*   Created: 2026/02/27 03:45:00 by erpascua          #+#    #+#             */
+/*   Updated: 2026/02/27 04:32:15 by erpascua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Data.hpp"
+#include "../includes/Serializer.hpp"
 
 /* ************************************************************************** */
 // 																			  //
@@ -18,36 +18,34 @@
 //																	 		  //
 /* ************************************************************************** */
 
-Data::Data(): _name("Unkmow item"), _value(0) {}
+Serializer::Serializer() {}
 
-Data::Data(std::string name, double value): _name(name), _value(value) {}
-
-Data::Data(const Data& cpy): _name(cpy._name), _value(cpy._value) {}
-
-Data::~Data() {}
-
-Data& Data::operator=(const Data& cpy)
+Serializer::Serializer(const Serializer& cpy)
 {
-	if (this != &cpy)
-	{
-		_name = cpy._name;
-		_value = cpy._value;
-	}
+	(void)cpy;
+}
+
+Serializer& Serializer::operator=(const Serializer& cpy)
+{
+	(void)cpy;
 	return (*this);
 }
 
+Serializer::~Serializer() {}
+
+
 /* ************************************************************************** */
 // 																			  //
-// 						  		 	GETTERS									  //
+// 						   		EXTERNAL FUNCTIONS							  //
 //																	 		  //
 /* ************************************************************************** */
 
-std::string Data::getName() const
+uintptr_t Serializer::serialize(Data* ptr)
 {
-	return (_name);
+	return (reinterpret_cast<uintptr_t>(ptr));
 }
 
-double Data::getValue() const
+Data* Serializer::deserialize(uintptr_t raw)
 {
-	return (_value);
+	return (reinterpret_cast<Data*>(raw));
 }

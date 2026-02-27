@@ -23,13 +23,13 @@ class Data
 	
 	public:
 		// OCF
-		Data(): _name("Unkmow item"), _value(0) {}
-		Data(std::string name, double value): _name(name), _value(value) {}
-		Data(const Data& cpy): _name(cpy._name), _value(cpy._value) {};
+		Data();
+		Data(std::string name, double value);
+		Data(const Data& cpy);
 		Data& operator=(const Data& cpy);
-		~Data() {};
+		~Data();
 
 		// Getters
-		std::string getName() const { return (_name); };
-		double		getValue() const { return (_value); };
+		std::string getName() const;
+		double		getValue() const;
 };
