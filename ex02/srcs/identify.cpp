@@ -6,7 +6,7 @@
 /*   By: erpascua <erpascua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 02:23:24 by erpascua          #+#    #+#             */
-/*   Updated: 2026/02/27 02:37:18 by erpascua         ###   ########.fr       */
+/*   Updated: 2026/02/27 13:36:01 by erpascua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,13 @@
 #include "C.hpp"
 
 void identify(Base* p)
-{	
+{
+	if (!p)
+	{
+		std::cerr << "Error: Null pointer detected\n";
+		return ;
+	}
+	
 	if (dynamic_cast<A*>(p))
 		std::cout << "A is identified\n";
 	else if (dynamic_cast<B*>(p))
@@ -35,7 +41,7 @@ void identify(Base& p)
 		std::cout << "A is identified\n";
 		return;
 	}
-	catch (const std::bad_cast&) {}
+	catch(const std::exception& e) {}
 
 	try
 	{
@@ -43,7 +49,7 @@ void identify(Base& p)
 		std::cout << "B is identified\n";
 		return;
 	}
-	catch (const std::bad_cast&) {}
+	catch(const std::exception& e)  {}
 
 	try
 	{
@@ -51,7 +57,7 @@ void identify(Base& p)
 		std::cout << "C is identified\n";
 		return;
 	}
-	catch (const std::bad_cast&) {}
-
+	catch(const std::exception& e) {}
+	
 	std::cout << "Unknown type\n";
 }

@@ -6,7 +6,7 @@
 /*   By: erpascua <erpascua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 21:30:11 by erpascua          #+#    #+#             */
-/*   Updated: 2026/02/27 02:47:29 by erpascua         ###   ########.fr       */
+/*   Updated: 2026/02/27 13:56:50 by erpascua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 # include <iostream>
 # include <ctime>
+# include <cstdlib>
+
 
 class Base
 {

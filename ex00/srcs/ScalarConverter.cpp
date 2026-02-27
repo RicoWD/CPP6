@@ -6,7 +6,7 @@
 /*   By: erpascua <erpascua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 02:29:00 by erpascua          #+#    #+#             */
-/*   Updated: 2026/02/27 04:27:12 by erpascua         ###   ########.fr       */
+/*   Updated: 2026/02/27 13:40:37 by erpascua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,21 +54,21 @@ void ScalarConverter::convert(std::string input)
 
 	if (input == "nan" || input == "nanf" || input == "+inf" || input == "+inff" || input == "-inf" || input == "-inff")
 	{
-		std::cout << BOLDYELLOW << "isSpecial: " << input << "\n" << RESET;
+		// std::cout << BOLDYELLOW << "isSpecial: " << input << "\n" << RESET;
 		printSpecial(input);
 		return ;
 	}
 	
 	if (isChar(input))
 	{
-		std::cout << BOLDYELLOW << "isChar: " << input << "\n" << RESET;
+		// std::cout << BOLDYELLOW << "isChar: " << input << "\n" << RESET;
 		printChar(input[0]);
 		return ;
 	}
 
 	if (isInt(input))
 	{
-		std::cout << BOLDYELLOW << "isInt: " << input << "\n" << RESET;
+		// std::cout << BOLDYELLOW << "isInt: " << input << "\n" << RESET;
 		long value;
 		std::istringstream ss(input);
 		ss >> value;
@@ -91,7 +91,7 @@ void ScalarConverter::convert(std::string input)
 
 	if (isFloat(input))
 	{
-		std::cout << BOLDYELLOW << "isFloat: " << input << "\n" << RESET;
+		// std::cout << BOLDYELLOW << "isFloat: " << input << "\n" << RESET;
 		std::string withoutSuffix = input.substr(0, input.length() - 1);
 		float f;
 		std::istringstream ss(withoutSuffix);
@@ -115,7 +115,7 @@ void ScalarConverter::convert(std::string input)
 
 	if (isDouble(input))
 	{
-		std::cout << BOLDYELLOW << "isDouble: " << input << "\n" << RESET;
+		// std::cout << BOLDYELLOW << "isDouble: " << input << "\n" << RESET;
 		double d;
 		std::istringstream ss(input);
 		ss >> d;
@@ -242,8 +242,8 @@ void printSpecial(std::string input)
 
 void printChar(char c)
 {
-	std::cout	<< BOLDGREEN << "Input: " << c << "\n" << RESET
-				<< "char: '" << c << "'\n"
+	// std::cout	<< BOLDGREEN << "Input: " << c << "\n" << RESET;
+	std::cout	<< "char: '" << c << "'\n"
 				<< "int: " << static_cast<int>(c) << "\n"
 				<< "float: " << std::fixed << std::setprecision(1) << static_cast<float>(c) << "f\n"
 				<< "double: " << std::fixed << std::setprecision(1) << static_cast<double>(c) << "\n";
@@ -252,7 +252,7 @@ void printChar(char c)
 
 void printInt(int n)
 {
-	std::cout << BOLDGREEN << "Input: " << n << "\n" << RESET;
+	// std::cout << BOLDGREEN << "Input: " << n << "\n" << RESET;
 	if (n >= 0 && n <= 127 && std::isprint(n))
 		std::cout << "char: '" << static_cast<char>(n) << "'\n";
 	else if (n >= 0 && n <= 127)
@@ -267,7 +267,7 @@ void printInt(int n)
 
 void printFloat(float f)
 {
-	std::cout << BOLDGREEN << "Input: " << f << "f\n" << RESET;
+	// std::cout << BOLDGREEN << "Input: " << f << "f\n" << RESET;
 	if (std::isnan(f) || std::isinf(f))
 		std::cout << GREY << "char: impossible\n" << RESET
 				  << GREY << "int: impossible\n" << RESET;
@@ -297,7 +297,7 @@ void printFloat(float f)
 
 void printDouble(double d)
 {
-	std::cout << BOLDGREEN << "Input: " << d << "\n" << RESET;
+	// std::cout << BOLDGREEN << "Input: " << d << "\n" << RESET;
 	if (std::isnan(d) || std::isinf(d))
 		std::cout << GREY << "char: impossible\n" << RESET
 				  << GREY << "int: impossible\n" << RESET
