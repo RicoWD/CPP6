@@ -6,7 +6,7 @@
 /*   By: erpascua <erpascua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 21:30:59 by erpascua          #+#    #+#             */
-/*   Updated: 2026/02/26 21:39:46 by erpascua         ###   ########.fr       */
+/*   Updated: 2026/02/27 04:40:36 by erpascua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,4 @@
 
 # include "Base.hpp"
 
-class C: public Base
-{
-
-};
+class C: public Base {};
